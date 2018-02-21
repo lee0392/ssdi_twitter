@@ -5,6 +5,9 @@ ACCESS_TOKEN = '964881732901142530-pcD6zkE3JVgoySgHbH6P7Q6AIQ61EKD'
 ACCESS_SECRET = '3W1kfjhUpRWmg8GEs5DjXTSCirtuDXWoSiWwCscQrAZM9'
 CONSUMER_KEY = 'WsWFWwk0c07oMdXWovQKVoA3g'
 CONSUMER_SECRET = 'rVDyLDBLzTHlnO8uqixmfEg8KagNMqWRnPsXcqJIkdCrdxRczb'
+
+#list(tweepy.Cursor(api.search, q=query, result_type='recent').items(limit))
+
 SEARCH=input("Enter the search string ")
 FROM=input("Enter the from date (YYYY-MM-DD format) ")
 TO=input("Enter the to data (YYYY-MM-DD format) ")
@@ -18,7 +21,9 @@ i=0;
 
 f = open(INPUT_FILE_PATH, 'w', encoding='utf-8')
 
-for res in tweepy.Cursor(api.search, q=SEARCH, rpp=100, count=20, result_type="recent", since = FROM,until =TO, include_entities=True, lang="en").items(num):
+#for res in tweepy.Cursor(api.search, q=SEARCH, rpp=100, count=20, result_type="recent", since = FROM,until =TO, lang="en").items(num):
+for res in tweepy.Cursor(api.search, q=("{}&since:{}&until:{}").format(SEARCH,FROM,TO), rpp=100, count=20, result_type="recent", include_entities=True, lang="en").items(num):
+#for res in tweepy.Cursor(api.search, q=SEARCH, result_type="recent", lang="en").items(num):
 	i+=1
 	f.write(res.user.screen_name)
 	f.write(' ')
