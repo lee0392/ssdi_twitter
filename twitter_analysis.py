@@ -1,7 +1,8 @@
-import re
-import operator
-import datetime
+#Developer: Pranalee Jadhav
 
+import re #importing regular expression library
+import operator  #for sorting dictionary 
+import datetime #importing date time library
 
 #Defining global variables
 data = [[]]
@@ -124,27 +125,30 @@ getEveryHourTweets()
 
 #Display Menu
 while 1:
-	query = int(input("\nChoose Options:\npress 0 for top n users who have tweeted the most for the entire timeline\npress 1 for top n users who have tweeted the most for every hour\npress 2 for top n users who have the maximum followers\npress 3 for top n tweets which have the maximum retweet count\npress 4 for exit\n\n"));
+	try: #exception handling for allowing integer input only
+		query = int(input("\nChoose Options:\npress 0 for top n users who have tweeted the most for the entire timeline\npress 1 for top n users who have tweeted the most for every hour\npress 2 for top n users who have the maximum followers\npress 3 for top n tweets which have the maximum retweet count\npress 4 for exit\n\n"));
 
 
-	if query==0:
-		n1 = int(input("Enter n to know top n users who have tweeted the most for the entire timeline : "))
-		sorted_dict = sorted(count1.items(), key=lambda i: i[1][0], reverse=True)
-		displayDict(sorted_dict,n1,0)
+		if query==0:
+			n1 = int(input("Enter n to know top n users who have tweeted the most for the entire timeline : "))
+			sorted_dict = sorted(count1.items(), key=lambda i: i[1][0], reverse=True)
+			displayDict(sorted_dict,n1,0)
 
-	elif query==1:
-		n1 = int(input("Enter n to know top n users who have tweeted the most for every hour : "))
-		disp_perhr_tweet(n1)
+		elif query==1:
+			n1 = int(input("Enter n to know top n users who have tweeted the most for every hour : "))
+			disp_perhr_tweet(n1)
 		
 
-	elif query==2:
-		n1 = int(input("Enter n to know top n users who have the maximum followers : "))
-		sorted_dict = sorted(count1.items(), key=lambda i: i[1][1], reverse=True)
-		displayDict(sorted_dict,n1,2)
+		elif query==2:
+			n1 = int(input("Enter n to know top n users who have the maximum followers : "))
+			sorted_dict = sorted(count1.items(), key=lambda i: i[1][1], reverse=True)
+			displayDict(sorted_dict,n1,1)
 
-	elif query==3:
-		n1 = int(input("Enter n to know top n tweets which have the maximum retweet count : "))
-		displayTweets(count2,n1)
-	else:
-		break
+		elif query==3:
+			n1 = int(input("Enter n to know top n tweets which have the maximum retweet count : "))
+			displayTweets(count2,n1)
+		else:
+			break
 
+	except ValueError:
+		print('\nYou did not enter a valid integer. Please try again!!')
