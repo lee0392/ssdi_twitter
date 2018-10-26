@@ -1,6 +1,6 @@
 # Twitter api analysis
 
-## Working of the given python program is as follows:
+### Working of the given python program is as follows:
 
 1. Get access token, access secret, consumer key, consumer secret from twitter
 api.
@@ -14,7 +14,7 @@ between to and from date
 
 5. Iterate through tweets using tweepy.Cursor.
 
-Uses:
+### Uses:
 
 - We can use this code to get a list of tweets. Along with the tweet, the api will also
 return name of the person responsible for tweet, his followers count, retweet count,
